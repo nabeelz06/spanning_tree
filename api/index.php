@@ -1,6 +1,5 @@
 <?php
 
-// Nyalakan tampilan error ke layar browser
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
 error_reporting(E_ALL);
@@ -9,7 +8,6 @@ try {
     require __DIR__ . '/../vendor/autoload.php';
     $app = require_once __DIR__ . '/../bootstrap/app.php';
 
-    // Paksa Storage ke folder sementara (/tmp)
     $storagePath = '/tmp/storage';
     if (!is_dir($storagePath)) {
         mkdir($storagePath, 0777, true);
@@ -25,7 +23,6 @@ try {
     $kernel->terminate($request, $response);
 
 } catch (\Throwable $e) {
-    // Tampilkan Error di Layar (Background Merah)
     http_response_code(500);
     echo "<div style='background:#ffebe8; border:1px solid #cc0000; padding:20px; font-family:monospace;'>";
     echo "<h2 style='color:#cc0000; margin-top:0;'>🔥 Error Detacted</h2>";
